@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/saqiicod/sub-domains/Luma-Glow
+    - /bin/cp -r * $DEPLOYPATH
+    - echo "✅ Luma Glow successfully deployed to /sub-domains/Luma-Glow"
