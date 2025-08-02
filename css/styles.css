@@ -1,7 +1,7 @@
 /* ================================
    Fonts
 ================================ */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 :root {
   /* 🎨 Color Palette */
@@ -17,8 +17,8 @@
   --color-button-hover: #134b17;
 
   /* ✍️ Typography */
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'Poppins', sans-serif;
+  --font-heading: "Playfair Display", serif;
+  --font-body: "Poppins", sans-serif;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
@@ -44,12 +44,11 @@
   --transition-smooth: 0.5s ease-in-out;
 }
 
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--color-button-hover);
+a:focus,
+button:focus {
+  outline: 2px solid var(--secondary-green);
   outline-offset: 2px;
 }
-
 
 /* ================================
    Basic Styling
@@ -58,7 +57,7 @@ button:focus-visible {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* fallback for older */
 }
 
@@ -66,10 +65,10 @@ html {
   scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
   overflow-x: hidden;
 }
-
 
 body {
   background-color: var(--color-background);
@@ -80,7 +79,12 @@ body {
 }
 
 /* ✅ FIXED: Font variable typo in heading font */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   color: var(--color-heading);
   line-height: 1.2;
@@ -89,37 +93,40 @@ h1, h2, h3, h4, h5, h6 {
 /* ================================
    Navbar
 ================================ */
-nav{
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 40px;
   background-color: var(--color-primary);
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
   border-radius: 999px;
-  margin: 10px 30px;
   z-index: 9999;
-  top: 0;
-  position: sticky;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  gap: 50px;
+  transform: translateX(-50%);
+  width: 90%;
 }
 
-.logo{
+.logo {
   font-size: var(--font-size-xl);
   color: var(--color-heading);
 }
 
-.logo span{
+.logo span {
   color: var(--color-button-hover);
 }
 
-.hamburger{
+.hamburger {
   display: none;
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
 }
 
-.hamburger span{
+.hamburger span {
   width: 25px;
   height: 4px;
   background-color: var(--color-text-primary);
@@ -127,63 +134,73 @@ nav{
   transition: var(--transition-smooth);
 }
 
-.hamburger.active span:nth-child(1){
+.hamburger.active span:nth-child(1) {
   transform: rotate(45deg) translate(5px, 5px);
 }
-.hamburger.active span:nth-child(2){
+.hamburger.active span:nth-child(2) {
   opacity: 0;
 }
-.hamburger.active span:nth-child(3){
+.hamburger.active span:nth-child(3) {
   transform: rotate(-45deg) translate(8px, -8px);
 }
 
-.links ul{
+.links ul {
   list-style: none;
   display: flex;
   gap: var(--space-md);
 }
 
-.links ul li{
+.links ul li {
   padding: 10px 20px;
   border-radius: 999px;
   cursor: pointer;
   transition: var(--transition-fast);
 }
 
-.links ul li:hover{
+.links ul li:hover {
   background-color: var(--color-white);
   transform: translateY(-5px);
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
-.links ul li a{
+.links ul li a {
   text-decoration: none;
   color: var(--color-text-primary);
   font-weight: 500;
-    transition: var(--transition-smooth);
-
+  transition: var(--transition-smooth);
 }
 
-@media (max-width: 768px){
-  .hamburger{
+@media (max-width: 1200px) {
+  nav {
+    align-items: center;
+    padding: 20px 40px;
+    margin: 10px auto;
+    width: 90%;
+    border-radius: 999px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .hamburger {
     display: flex;
   }
 
-  .links{
+  .links {
     display: block;
     position: absolute;
     left: 0;
     top: -100vh;
     right: 0;
-    box-shadow: 10px 10px 10px rgba(0,0,0,0.1), -10px -10px 10px rgba(0,0,0,0.1);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1),
+      -10px -10px 10px rgba(0, 0, 0, 0.1);
     border-radius: 50px;
     padding: 1.5rem 1rem;
     transition: all 0.3s ease-in-out;
     text-align: center;
     z-index: 1000;
   }
-  
-  .links.active{
+
+  .links.active {
     top: calc(100% + 10px);
     opacity: 1;
     visibility: visible;
@@ -191,15 +208,77 @@ nav{
     transform: translateY(0);
   }
 
-  .links ul li:hover{
-  background-color: var(--color-primary);
-  transform: translateY(-5px);
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
-}
+  .links ul li:hover {
+    background-color: var(--color-primary);
+    transform: translateY(-5px);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+  }
 
-  .links ul{
+  .links ul {
     flex-direction: column;
-
   }
 }
 
+/*==== Hero Section ====*/
+.hero {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 40px;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(https://ik.imagekit.io/bj26aej2o/Leonardo_Phoenix_10_A_soft_dreamy_skincare_scene_with_a_glowin_0.jpg?updatedAt=1754134787174)
+      center / cover no-repeat;
+}
+
+.hero-content h1 {
+  color: var(--color-primary);
+  font-size: 4rem;
+  font-family: var(--font-heading);
+  margin-bottom: 20px;
+  text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content p {
+  color: var(--color-white);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.hero-content a {
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ffd700;
+  border-radius: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.hero-content a:hover {
+  transform: translateY(-5px) scale(1.02);
+}
+
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: var(--font-size-xxl);
+    padding: 10px 15px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-content h1 {
+    font-size: var(--font-size-xl);
+    padding: 5px 10px;
+  }
+}
+@media (max-width: 360px) {
+  .hero-content h1 {
+    font-size: var(--font-size-lg);
+    padding: 5px 10px;
+  }
+}
