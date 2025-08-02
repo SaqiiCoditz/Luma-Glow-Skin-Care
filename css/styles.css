@@ -1,0 +1,205 @@
+/* ================================
+   Fonts
+================================ */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+  /* 🎨 Color Palette */
+  --color-primary: #f9c5d1;
+  --color-secondary: #fdf6f0;
+  --color-accent: #ffd700;
+  --color-text-primary: #333333;
+  --color-text-muted: #777777;
+  --color-heading: #2b3a29;
+  --color-white: #ffffff;
+  --color-background: #fff4f0;
+  --color-button: #2c6e31;
+  --color-button-hover: #134b17;
+
+  /* ✍️ Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-md: 1.125rem;
+  --font-size-lg: 1.5rem;
+  --font-size-xl: 2rem;
+  --font-size-xxl: 3rem;
+
+  /* 📦 Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-xxl: 3rem;
+
+  /* ⚙️ Layout & Utilities */
+  --container-width: 75rem;
+  --section-padding: 4rem;
+  --border-radius: 0.625rem;
+  --transition-fast: 0.3s ease;
+  --transition-smooth: 0.5s ease-in-out;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-button-hover);
+  outline-offset: 2px;
+}
+
+
+/* ================================
+   Basic Styling
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* fallback for older */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+
+body {
+  background-color: var(--color-background);
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+/* ✅ FIXED: Font variable typo in heading font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--color-heading);
+  line-height: 1.2;
+}
+
+/* ================================
+   Navbar
+================================ */
+nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: var(--color-primary);
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+  border-radius: 999px;
+  margin: 10px 30px;
+  z-index: 9999;
+  top: 0;
+  position: sticky;
+}
+
+.logo{
+  font-size: var(--font-size-xl);
+  color: var(--color-heading);
+}
+
+.logo span{
+  color: var(--color-button-hover);
+}
+
+.hamburger{
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.hamburger span{
+  width: 25px;
+  height: 4px;
+  background-color: var(--color-text-primary);
+  border-radius: 5px;
+  transition: var(--transition-smooth);
+}
+
+.hamburger.active span:nth-child(1){
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2){
+  opacity: 0;
+}
+.hamburger.active span:nth-child(3){
+  transform: rotate(-45deg) translate(8px, -8px);
+}
+
+.links ul{
+  list-style: none;
+  display: flex;
+  gap: var(--space-md);
+}
+
+.links ul li{
+  padding: 10px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.links ul li:hover{
+  background-color: var(--color-white);
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+}
+
+.links ul li a{
+  text-decoration: none;
+  color: var(--color-text-primary);
+  font-weight: 500;
+    transition: var(--transition-smooth);
+
+}
+
+@media (max-width: 768px){
+  .hamburger{
+    display: flex;
+  }
+
+  .links{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: -100vh;
+    right: 0;
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.1), -10px -10px 10px rgba(0,0,0,0.1);
+    border-radius: 50px;
+    padding: 1.5rem 1rem;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    z-index: 1000;
+  }
+  
+  .links.active{
+    top: calc(100% + 10px);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .links ul li:hover{
+  background-color: var(--color-primary);
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+}
+
+  .links ul{
+    flex-direction: column;
+
+  }
+}
+
